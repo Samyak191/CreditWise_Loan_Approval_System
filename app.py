@@ -54,17 +54,25 @@ if "Marital_Status_Married" in trained_columns:
 # ---------------- Default Values (IMPORTANT FIX) ----------------
 # These prevent model from assuming worst-case (0)
 
-if "Credit_History" in trained_columns:
-    input_data["Credit_History"] = 1
+# ---------------- FORCE IMPORTANT FEATURES ----------------
 
-if "Loan_Amount_Term" in trained_columns:
-    input_data["Loan_Amount_Term"] = 360
+for col in trained_columns:
+    
+    # Fix Credit History (MOST IMPORTANT)
+    if "Credit_History" in col:
+        input_data[col] = 1
 
-if "Dependents" in trained_columns:
-    input_data["Dependents"] = 0
+    # Fix Loan Term
+    if "Loan_Amount_Term" in col:
+        input_data[col] = 360
 
-if "Self_Employed" in trained_columns:
-    input_data["Self_Employed"] = 0
+    # Fix Dependents
+    if "Dependents" in col:
+        input_data[col] = 0
+
+    # Fix Self Employed
+    if "Self_Employed" in col:
+        input_data[col] = 0
 
 # ---------------- Prediction ----------------
 if st.button("Predict Loan Approval"):
