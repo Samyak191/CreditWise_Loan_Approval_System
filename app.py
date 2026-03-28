@@ -48,6 +48,9 @@ if marital_status == "Married":
 # ---------------- Prediction ----------------
 if st.button("Predict Loan Approval"):
 
+    # ✅ Fix column order (VERY IMPORTANT)
+    input_data = input_data[trained_columns]
+
     input_scaled = scaler.transform(input_data)
 
     prediction = model.predict(input_scaled)
@@ -55,4 +58,4 @@ if st.button("Predict Loan Approval"):
     if prediction[0] == 1:
         st.success("✅ Loan Approved")
     else:
-        st.error("❌ Loan Rejected")
+        st.error("❌ Loan Not Approved")
