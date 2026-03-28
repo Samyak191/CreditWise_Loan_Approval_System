@@ -12,6 +12,7 @@ st.set_page_config(page_title="Loan Approval System", layout="wide")
 
 st.title("🏦 CreditWise Loan Approval System")
 st.write("Enter Applicant Details")
+st.write(trained_columns)
 
 col1, col2 = st.columns(2)
 
